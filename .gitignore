@@ -1,1 +1,6 @@
 folder_to_ignore/Library
+folder_to_ignore/Logs
+folder_to_ignore/obj
+folder_to_ignore/UserSettings
+folder_to_ignore/ColorCollector_BackUpThisFolder_ButDontShipItWithYourGame
+folder_to_ignore/ColorCollector_BurstDebugInformation_DoNotShip
