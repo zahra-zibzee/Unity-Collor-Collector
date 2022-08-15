@@ -17,6 +17,7 @@ public class SceneManager : MonoBehaviour
     {
         if (prevScene == null &&  playerTransform.position.z > FindObjectOfType<GameManager>().lastWall.transform.position.z)
         {
+            Debug.Log("bye wall");
             prevScene = shownScenes.Dequeue();
             shownScenesIndex.Dequeue();
 
@@ -25,7 +26,7 @@ public class SceneManager : MonoBehaviour
             SpawnScene(Random.Range(3, scenes.Length));
         }
 
-        if ((playerTransform.position.z - 20) > zSpawn - (3 * sceneLength))
+        if ((playerTransform.position.z - 20) > zSpawn - (4 * sceneLength) && prevScene != null)
         {
             Destroy(prevScene);
             prevScene = null;
