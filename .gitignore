@@ -1,0 +1,21 @@
+# built application files
+*.apk
+*.ap_
+
+# Java class files
+*.class
+
+# Keystore files
+*.keystore
+
+/.vs
+/.vscode
+/.vsconfig
+
+
+/Library
+/Logs
+/obj
+/UserSettings
+/ColorCollector_BackUpThisFolder_ButDontShipItWithYourGame
+/ColorCollector_BurstDebugInformation_DoNotShip
