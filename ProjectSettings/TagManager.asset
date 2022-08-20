@@ -12,6 +12,7 @@ TagManager:
   - ENEMYBALL
   - Score
   - PlayerChild
+  - Level
   layers:
   - Default
   - TransparentFX

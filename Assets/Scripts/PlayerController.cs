@@ -67,26 +67,38 @@ public class PlayerController : MonoBehaviour
 
             if (touch.phase == TouchPhase.Moved)
             {
-                if (touch.deltaPosition.x > 10 && transform.position.x <= 5.5)
+                if (touch.deltaPosition.x > 0)
                 {
-                    dir = 1;
-                    transform.position += Vector3.right * Time.deltaTime * touchSpeed;
+                    Debug.Log("rigjt");
+                    if (transform.position.x <= 5.5)
+                    {
+                        dir = 1;
+                        transform.position += Vector3.right * Time.deltaTime * touchSpeed;
+                    }
                 }
-                else if (touch.deltaPosition.x < 10 && transform.position.x >= -8)
+                else if (touch.deltaPosition.x < 0)
                 {
-                    dir = -1;
-                    transform.position += Vector3.left * Time.deltaTime * touchSpeed;
+                    Debug.Log("left");
+                    if (transform.position.x >= -8)
+                    {
+                        dir = -1;
+                        transform.position += Vector3.left * Time.deltaTime * touchSpeed;
+                    }
                 }
             }
             if(touch.phase == TouchPhase.Stationary)
             {
-                if (dir == 1 && transform.position.x <= 5.5)
+                if (dir == 1)
                 {
-                    transform.position += Vector3.right * Time.deltaTime * touchSpeed;
+                    Debug.Log("rigghhhhtttttttttttt");
+                    if(transform.position.x <= 5.5)
+                        transform.position += Vector3.right * Time.deltaTime * touchSpeed;
                 }
-                else if (dir == -1 && transform.position.x >= -8)
+                else if (dir == -1)
                 {
-                    transform.position += Vector3.left * Time.deltaTime * touchSpeed;
+                    Debug.Log("leeeeeeeeeeeeft");
+                    if(transform.position.x >= -8)
+                        transform.position += Vector3.left * Time.deltaTime * touchSpeed;
                 }
             }
             if(touch.phase == TouchPhase.Ended)

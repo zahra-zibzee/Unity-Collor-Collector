@@ -24,6 +24,7 @@ public class SceneManager : MonoBehaviour
             //Random.seed = System.DateTime.Now.Millisecond;
             Random.InitState(System.DateTime.Now.Millisecond);
             SpawnScene(Random.Range(3, scenes.Length));
+            //SpawnScene(4);
         }
 
         if ((playerTransform.position.z - 20) > zSpawn - (4 * sceneLength) && prevScene != null)

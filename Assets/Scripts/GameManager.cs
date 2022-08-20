@@ -12,16 +12,22 @@ public class GameManager : MonoBehaviour
     public GameObject lastWall;
     private List<GameObject> balls;
     private GameObject score;
+    private GameObject levelGameObject;
+    private TextMeshPro levelTxt;
     private List<GameObject> USmall;
     private int destroyCounter = 0;
     public int level = 0;
-    private bool passedLevel = false;
-    public GameObject playButton;
+    private bool passedLevel, showRetryOnce = false;
+    public GameObject playButton, retryButton;
 
     void Start()
     {
         GameAnalytics.Initialize();
-        
+
+        levelGameObject = GameObject.FindGameObjectWithTag("Level");
+        //Debug.Log("amooooooo");
+        //Debug.Log(levelGameObject.transform.GetComponent<TextMeshPro>().text);
+
         PlayerData data = SaveSystem.LoadState();
         if (data == null)
         {
@@ -42,11 +48,13 @@ public class GameManager : MonoBehaviour
 
     private void Pause()
     {
+        retryButton.SetActive(false);
         playButton.SetActive(true);
         FindObjectOfType<PlayerController>().stopFlag = true;
     }
 
 
+    //play button onclick
     public void Play()
     {
         //score = 0;
@@ -54,6 +62,23 @@ public class GameManager : MonoBehaviour
 
         playButton.SetActive(false);
         FindObjectOfType<PlayerController>().stopFlag = false;
+    }
+    
+    public void ShowRetry()
+    {
+        Debug.Log("Show Retry");
+        retryButton.SetActive(true);
+        FindObjectOfType<PlayerController>().stopFlag = true;
+    }
+
+    //retry button onclick
+    public void Retry()
+    {
+        Debug.Log("Retry");
+        retryButton.SetActive(false);
+        showRetryOnce = false;
+        FindObjectOfType<PlayerController>().ResetPlayer();
+        FindObjectOfType<SceneManager>().RestartLevel();
     }
 
     void Update()
@@ -188,6 +213,7 @@ public class GameManager : MonoBehaviour
                         lastWall.transform.position += Vector3.down * Time.deltaTime;
                     else
                     {
+                        Debug.Log("hiiii destroy");
                         FindObjectOfType<PlayerController>().stopFlag = false;
                         passedLevel = false;
                         Destroy(score);
@@ -201,13 +227,19 @@ public class GameManager : MonoBehaviour
                         }
                         //update level
                         level++;
+                        levelTxt = levelGameObject.transform.GetComponent<TextMeshPro>();
+                        //###################################################################
+                        levelTxt.text = "hi";
+                        Debug.Log(levelTxt.text);
+                        
+
                     }
 
                 }
-                else
+                else if(!showRetryOnce)
                 {
-                    FindObjectOfType<PlayerController>().ResetPlayer();
-                    FindObjectOfType<SceneManager>().RestartLevel();
+                    ShowRetry();
+                    showRetryOnce = true;
                 }
             }
             
