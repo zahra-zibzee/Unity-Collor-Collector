@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
         if (Touch.activeFingers.Count == 1)
         {
             MovePlayer(Touch.activeTouches[0]);
-            Debug.Log("fingerrrrrrr");
         }
 
         /*if (Input.touchCount > 0)

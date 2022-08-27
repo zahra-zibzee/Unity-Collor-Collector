@@ -12,21 +12,15 @@ public class GameManager : MonoBehaviour
     public GameObject lastWall;
     private List<GameObject> balls;
     private GameObject score;
-    private GameObject levelGameObject;
-    private TextMeshPro levelTxt;
     private List<GameObject> USmall;
     private int destroyCounter = 0;
     public int level = 0;
     private bool passedLevel, showRetryOnce = false;
-    public GameObject playButton, retryButton;
+    public GameObject playButton, retryButton, levelGameObject;
 
     void Start()
     {
         GameAnalytics.Initialize();
-
-        levelGameObject = GameObject.FindGameObjectWithTag("Level");
-        //Debug.Log("amooooooo");
-        //Debug.Log(levelGameObject.transform.GetComponent<TextMeshPro>().text);
 
         PlayerData data = SaveSystem.LoadState();
         if (data == null)
@@ -43,6 +37,10 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<SceneManager>().SpawnScene(data.scene2);
             level = data.level;
         }
+
+        TextMeshProUGUI levelTxt = levelGameObject.GetComponent<TextMeshProUGUI>();
+        levelTxt.text = "Level: " + level.ToString();
+
         Pause();
     }
 
@@ -57,16 +55,12 @@ public class GameManager : MonoBehaviour
     //play button onclick
     public void Play()
     {
-        //score = 0;
-        //scoreText.text = "Score: " + score.ToString();
-
         playButton.SetActive(false);
         FindObjectOfType<PlayerController>().stopFlag = false;
     }
     
     public void ShowRetry()
     {
-        Debug.Log("Show Retry");
         retryButton.SetActive(true);
         FindObjectOfType<PlayerController>().stopFlag = true;
     }
@@ -74,7 +68,6 @@ public class GameManager : MonoBehaviour
     //retry button onclick
     public void Retry()
     {
-        Debug.Log("Retry");
         retryButton.SetActive(false);
         showRetryOnce = false;
         FindObjectOfType<PlayerController>().ResetPlayer();
@@ -213,7 +206,6 @@ public class GameManager : MonoBehaviour
                         lastWall.transform.position += Vector3.down * Time.deltaTime;
                     else
                     {
-                        Debug.Log("hiiii destroy");
                         FindObjectOfType<PlayerController>().stopFlag = false;
                         passedLevel = false;
                         Destroy(score);
@@ -225,16 +217,13 @@ public class GameManager : MonoBehaviour
                         {
                             Destroy(ballsInside[i]);
                         }
+
                         //update level
                         level++;
-                        levelTxt = levelGameObject.transform.GetComponent<TextMeshPro>();
-                        //###################################################################
-                        levelTxt.text = "hi";
+                        TextMeshProUGUI levelTxt = levelGameObject.GetComponent<TextMeshProUGUI>();
+                        levelTxt.text = "Level: " + level.ToString();
                         Debug.Log(levelTxt.text);
-                        
-
                     }
-
                 }
                 else if(!showRetryOnce)
                 {
@@ -242,11 +231,6 @@ public class GameManager : MonoBehaviour
                     showRetryOnce = true;
                 }
             }
-            
-            //paint the last wall
-
         }
-
     }
-
 }

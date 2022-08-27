@@ -202,7 +202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   m_LocalRotation: {x: 0.3907311, y: 0, z: 0, w: 0.9205049}
-  m_LocalPosition: {x: 0, y: 20, z: -75}
+  m_LocalPosition: {x: -0.5, y: 20, z: -75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1036,7 +1036,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466163811}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6673492, y: -14.530617, z: -37.984314}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1062,6 +1062,7 @@ MonoBehaviour:
   level: 0
   playButton: {fileID: 1572265818}
   retryButton: {fileID: 1495630526}
+  levelGameObject: {fileID: 1615158377}
 --- !u!1 &1495630526
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,7 +1458,7 @@ GameObject:
   - component: {fileID: 1615158379}
   m_Layer: 5
   m_Name: Level
-  m_TagString: Level
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1477,9 +1478,9 @@ RectTransform:
   m_Father: {fileID: 1080211468}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 200}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1615158379
@@ -1627,13 +1628,15 @@ MonoBehaviour:
   - {fileID: 3954187836624243595, guid: eba829400a78aa94698ea6412f42fca0, type: 3}
   - {fileID: 3954187836624243595, guid: 64f987d35c2c53642986f9409e5e4ed3, type: 3}
   - {fileID: 3954187836624243595, guid: eb591d8e9882d004dafa6e99cc6a1e6c, type: 3}
+  - {fileID: 3954187836624243595, guid: b6a90e96ad6420543adb0934ea84fed6, type: 3}
   - {fileID: 3954187836624243595, guid: 55abf27903d1aba4e8db9e57080a8bd0, type: 3}
-  - {fileID: 1711978294914764758, guid: ec892434f82e41247b7972d704c1f27b, type: 3}
-  - {fileID: 2243965101177906042, guid: e6cb0b2fa42c6a94c946f83f17c9530a, type: 3}
-  - {fileID: 8528344741584895679, guid: 44ac70f14b75df84db594a02c2977eb4, type: 3}
-  - {fileID: 2243965101177906042, guid: c41f666233788564c84b624067f8eb16, type: 3}
+  - {fileID: 3954187836624243595, guid: 59b53e3281d391e49b86f2eff33d5b58, type: 3}
   - {fileID: 8528344741584895679, guid: 89bc1ad9f62dd3340b884afaa2b918ba, type: 3}
   - {fileID: 3954187836624243595, guid: c79f90b7562978042aba13c14db140e2, type: 3}
+  - {fileID: 8528344741584895679, guid: 44ac70f14b75df84db594a02c2977eb4, type: 3}
+  - {fileID: 2243965101177906042, guid: c41f666233788564c84b624067f8eb16, type: 3}
+  - {fileID: 2243965101177906042, guid: e6cb0b2fa42c6a94c946f83f17c9530a, type: 3}
+  - {fileID: 1711978294914764758, guid: ec892434f82e41247b7972d704c1f27b, type: 3}
   zSpawn: 0
   sceneLength: 80
   playerTransform: {fileID: 1249746090}

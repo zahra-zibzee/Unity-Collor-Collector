@@ -17,17 +17,21 @@ public class SceneManager : MonoBehaviour
     {
         if (prevScene == null &&  playerTransform.position.z > FindObjectOfType<GameManager>().lastWall.transform.position.z)
         {
-            Debug.Log("bye wall");
             prevScene = shownScenes.Dequeue();
             shownScenesIndex.Dequeue();
 
-            //Random.seed = System.DateTime.Now.Millisecond;
-            Random.InitState(System.DateTime.Now.Millisecond);
-            SpawnScene(Random.Range(3, scenes.Length));
-            //SpawnScene(4);
+
+            int lvl = FindObjectOfType<GameManager>().level;
+            if (lvl <= 9)
+                SpawnScene(lvl + 2);
+            else //start spawning random scenes
+            {
+                Random.InitState(System.DateTime.Now.Millisecond);
+                SpawnScene(Random.Range(5, scenes.Length));
+            }
         }
 
-        if ((playerTransform.position.z - 20) > zSpawn - (4 * sceneLength) && prevScene != null)
+        if ((playerTransform.position.z - 35) > zSpawn - (4 * sceneLength) && prevScene != null)
         {
             Destroy(prevScene);
             prevScene = null;
